@@ -334,3 +334,5 @@ navTabs.forEach((nav) => {
     nav.classList.add('active');
   });
 });
+
+

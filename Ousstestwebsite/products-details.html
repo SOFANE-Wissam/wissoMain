@@ -70,46 +70,59 @@
 
   </div>
  <div class="carousel-section">
-  <div class="tabs">
+  <!-- <div class="tabs">
     <button type="button" class="load-dim" data-page="45">DIAMETER 45</button>
     <button type="button" class="load-dim" data-page="53">DIAMETER 53</button>
 
-  </div>
+  </div> -->
 
   <div class="carousel-wrapper">
-    <div class="carousel tab-content active" data-tab="45">
-      <!-- Diameter 45 products -->
-      <div class="product"><img src="img/Round 45x190.png" alt=""><p>Round</p></div>
-      <div class="product"><img src="img/Round shape A 45x190.png" alt=""><p>Round Shape A</p></div>
-      <div class="product"><img src="img/Round shape B 45x190.png" alt=""><p>Round Shape B</p></div>
-      <div class="product"><img src="img/Gorge 45x190.png" alt=""><p>Gorge</p></div>
-      <div class="product"><img src="img/Gorge shape A 45x190.png" alt=""><p>Gorge Shape A</p></div>
-      <div class="product"><img src="img/Gorge shape B 45x190.png" alt=""><p>Gorge Shape B</p></div>
-      <div class="product"><img src="img/Gorge shape C 45x190.png" alt=""><p>Gorge Shape C</p></div>
-      <div class="product"><img src="img/Flat 45x190.png" alt=""><p>Flat</p></div>
-      <div class="product"><img src="img/Oval 45x150.png" alt=""><p>Oval</p></div>
-    </div>
-
-    <div class="carousel tab-content" data-tab="53">
+    
+      <h3>Diameter 45 mm</h3>
+      <div class="carousel-scroll" data-tab="45">
+        
+        <div class="carousel tab-content active">
+      <!-- Diameter 45 products --> 
+          <div class="product"><img src="img/Round 45x190.png" alt=""><p>Round</p></div>
+          <div class="product"><img src="img/Round shape A 45x190.png" alt=""><p>Round Shape A</p></div>
+          <div class="product"><img src="img/Round shape B 45x190.png" alt=""><p>Round Shape B</p></div>
+          <div class="product"><img src="img/Gorge 45x190.png" alt=""><p>Gorge</p></div>
+          <div class="product"><img src="img/Gorge shape A 45x190.png" alt=""><p>Gorge Shape A</p></div>
+          <div class="product"><img src="img/Gorge shape B 45x190.png" alt=""><p>Gorge Shape B</p></div>
+          <div class="product"><img src="img/Gorge shape C 45x190.png" alt=""><p>Gorge Shape C</p></div>
+          <div class="product"><img src="img/Flat 45x190.png" alt=""><p>Flat</p></div>
+          <div class="product"><img src="img/Oval 45x150.png" alt=""><p>Oval</p></div>
+        </div>
+      </div>
+     
+       <h3>Diameter 53 mm</h3>
+      <div class="carousel-scroll" data-tab="53">
+       
+        <div class="carousel tab-content active">
       <!-- Diameter 53 products -->
-      <div class="product"><img src="img/Round 173.png" alt=""><p>Round</p></div>
-      <div class="product"><img src="img/Gorge 173.png" alt=""><p>Gorge</p></div>
-      <div class="product"><img src="img/Gorge shape A 150.png" alt=""><p>Gorge Shape A</p></div>
-      <div class="product"><img src="img/Flat 150.png" alt=""><p>Flat</p></div>
-      <div class="product"><img src="img/Flat shape A1 150.png" alt=""><p>Flat Shape A-1</p></div>
-      <div class="product"><img src="img/Flat shape A2 150.png" alt=""><p>Flat Shape A-2</p></div>
-      <div class="product"><img src="img/Flat shape A3 150.png" alt=""><p>Flat Shape A-3</p></div>
-      <div class="product"><img src="img/Flat shape A4 140.png" alt=""><p>Flat Shape A-4</p></div>
-      <div class="product"><img src="img/Flat shape B1 140.png" alt=""><p>Flat Shape B-1</p></div>
-    </div>
+          <div class="product"><img src="img/Round 173.png" alt=""><p>Round</p></div>
+          <div class="product"><img src="img/Gorge 173.png" alt=""><p>Gorge</p></div>
+          <div class="product"><img src="img/Gorge shape A 150.png" alt=""><p>Gorge Shape A</p></div>
+          <div class="product"><img src="img/Flat 150.png" alt=""><p>Flat</p></div>
+          <div class="product"><img src="img/Flat shape A1 150.png" alt=""><p>Flat Shape A-1</p></div>
+          <div class="product"><img src="img/Flat shape A2 150.png" alt=""><p>Flat Shape A-2</p></div>
+          <div class="product"><img src="img/Flat shape A3 150.png" alt=""><p>Flat Shape A-3</p></div>
+          <div class="product"><img src="img/Flat shape A4 140.png" alt=""><p>Flat Shape A-4</p></div>
+          <div class="product"><img src="img/Flat shape B1 140.png" alt=""><p>Flat Shape B-1</p></div>
+        </div>
+      </div>
+  </div>
+</div>  
 
-    <div class=carousel-text>
-        <h2>Manufacturing Height Range</h2></div>
-    <div class=carousel-img>
+<div class="carousel-text">
+    <h2>Manufacturing Height Range</h2>
+</div>
+<div class="carousel-img">
     <img src="images/GRAPHE-600x338.png" alt="Manufacturing Height Range">
-    </div>
+</div>
+
     <section class="carousel-text">
-  <h2>PRINTING AND FINISHING</h2>
+  <h2>Printing And Finishing</h2>
   <div class="printing-content">
     <div class="printing-text">
       <h3><i>🎨</i> BASE OPTIONS</h3>
@@ -229,6 +242,41 @@ document.querySelectorAll('.mouse-track').forEach(container => {
         image.style.transform = `translate(0px, 0px)`;
     });
 });
+
+
+ const scrollContainers = document.querySelectorAll('.carousel-scroll');
+
+  scrollContainers.forEach(container => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    container.addEventListener('mousedown', (e) => {
+      isDown = true;
+      container.classList.add('active');
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    });
+
+    container.addEventListener('mouseleave', () => {
+      isDown = false;
+      container.classList.remove('active');
+    });
+
+    container.addEventListener('mouseup', () => {
+      isDown = false;
+      container.classList.remove('active');
+    });
+
+    container.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 1; // Speed
+      container.scrollLeft = scrollLeft - walk;
+    });
+  });
+
 </script>
     
 </body>

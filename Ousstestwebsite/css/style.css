@@ -1034,16 +1034,22 @@ h3 {
   position: absolute;
   border-radius: 0 93px 0 93px;
 }
-
-.carousel {
-  position: relative;
-  display: block;
-  z-index: 5;
-  width: 100%;
-  height: 541px;
-  overflow: hidden;
+* {
+  box-sizing: border-box;
 }
-
+.carousel {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+.carousel-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  cursor: grab;
+  margin-bottom: 2rem;
+  scroll-behavior: smooth;
+}
 .carousel-buttons {
   height: 100%;
   padding: 0 50px;
@@ -1783,7 +1789,7 @@ footer {
 .carousel-img{
   width: 100%;
   align-items: center;
-
+  
 }
 .carousel-img img:hover {
     transform: scale(1.05);
@@ -1792,18 +1798,21 @@ footer {
 
 
 
+
 .product {
   flex: 0 0 auto;
   width: 180px;
   text-align: center;
+  background: #f7f7f7;
+  border-radius: 5px;
+  padding: 10px;
+  transition: transform 0.2s ease;
 }
 
 .product img {
   width: 100%;
-  border-radius: 10px;
-  background: #f2f2f2;
+  height: 90%;
 }
-
 .product p {
   margin-top: 0.5rem;
   font-weight: bold;
