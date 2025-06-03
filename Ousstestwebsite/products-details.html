@@ -94,7 +94,9 @@
           <div class="product"><img src="img/Oval 45x150.png" alt=""><p>Oval</p></div>
         </div>
       </div>
-     
+      <div class="carousel-dots" data-for="45"></div>
+      <br>
+
        <h3>Diameter 53 mm</h3>
       <div class="carousel-scroll" data-tab="53">
        
@@ -111,8 +113,10 @@
           <div class="product"><img src="img/Flat shape B1 140.png" alt=""><p>Flat Shape B-1</p></div>
         </div>
       </div>
+       <div class="carousel-dots" data-for="53"></div>
   </div>
-</div>  
+
+
 
 <div class="carousel-text">
     <h2>Manufacturing Height Range</h2>
@@ -244,38 +248,94 @@ document.querySelectorAll('.mouse-track').forEach(container => {
 });
 
 
- const scrollContainers = document.querySelectorAll('.carousel-scroll');
+document.querySelectorAll('.carousel-scroll').forEach(carouselScroll => {
+  const tab = carouselScroll.getAttribute('data-tab');
+  const carousel = carouselScroll.querySelector('.carousel');
+  const dotsContainer = document.querySelector(`.carousel-dots[data-for="${tab}"]`);
 
-  scrollContainers.forEach(container => {
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+  const totalScrollWidth = carousel.scrollWidth;
+  const visibleWidth = carouselScroll.clientWidth;
 
-    container.addEventListener('mousedown', (e) => {
-      isDown = true;
-      container.classList.add('active');
-      startX = e.pageX - container.offsetLeft;
-      scrollLeft = container.scrollLeft;
+  let pageCount;
+if (window.innerWidth <= 768 && window.innerHeight > window.innerWidth) {
+  // Mobile portrait
+  pageCount = 9;
+} else {
+  // Desktop and landscape
+  pageCount = 3;
+}
+
+  const pageWidth = (totalScrollWidth - visibleWidth) / (pageCount - 1);
+
+  // Create 3 dots
+  for (let i = 0; i < pageCount; i++) {
+    const dot = document.createElement('button');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      carouselScroll.scrollTo({
+        left: i * pageWidth,
+        behavior: 'smooth'
+      });
     });
+    dotsContainer.appendChild(dot);
+  }
 
-    container.addEventListener('mouseleave', () => {
-      isDown = false;
-      container.classList.remove('active');
-    });
+  const dots = dotsContainer.querySelectorAll('button');
 
-    container.addEventListener('mouseup', () => {
-      isDown = false;
-      container.classList.remove('active');
-    });
+  // Sync active dot on scroll
+  carouselScroll.addEventListener('scroll', () => {
+    const scrollLeft = carouselScroll.scrollLeft;
+    const currentPage = Math.round(scrollLeft / pageWidth);
 
-    container.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - container.offsetLeft;
-      const walk = (x - startX) * 1; // Speed
-      container.scrollLeft = scrollLeft - walk;
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentPage);
     });
   });
+
+  // Drag & Touch Support
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  carouselScroll.addEventListener('mousedown', (e) => {
+    isDown = true;
+    carouselScroll.classList.add('active');
+    startX = e.pageX - carouselScroll.getBoundingClientRect().left;
+    scrollLeft = carouselScroll.scrollLeft;
+  });
+
+  carouselScroll.addEventListener('mouseleave', () => {
+    isDown = false;
+    carouselScroll.classList.remove('active');
+  });
+
+  carouselScroll.addEventListener('mouseup', () => {
+    isDown = false;
+    carouselScroll.classList.remove('active');
+  });
+
+  carouselScroll.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - carouselScroll.getBoundingClientRect().left;
+    const walk = (x - startX);
+    carouselScroll.scrollLeft = scrollLeft - walk;
+  });
+
+  // Touch
+  carouselScroll.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].pageX - carouselScroll.getBoundingClientRect().left;
+    scrollLeft = carouselScroll.scrollLeft;
+  });
+
+  carouselScroll.addEventListener('touchmove', (e) => {
+    const x = e.touches[0].pageX - carouselScroll.getBoundingClientRect().left;
+    const walk = (x - startX);
+    carouselScroll.scrollLeft = scrollLeft - walk;
+  });
+});
+
+
 
 </script>
     
