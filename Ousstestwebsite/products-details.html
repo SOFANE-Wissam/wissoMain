@@ -125,7 +125,7 @@
     <img src="images/GRAPHE-600x338.png" alt="Manufacturing Height Range">
 </div>
 
-    <section class="carousel-text">
+    <!-- <section class="carousel-text">
   <h2>Printing And Finishing</h2>
   <div class="printing-content">
     <div class="printing-text">
@@ -148,11 +148,43 @@
       <p>The printing unit applies up to 9 colors for versatile decoration on single-piece packaging. An optional QC system guarantees precision, delivering vibrant and high-quality printing results.</p>
     </div>
   </div>
-</section>
+</section> -->
   </div>
  </div>
  
    </div>
+
+<!-- Can section -->
+<section class="printing-finishing">
+  <div class="content-wrapper">
+    <h2 class="section-title">Printing and Finishing</h2>
+    <p class="section-description">
+      Our aerosol cans undergo high-quality printing and finishing, starting with a strong base and a refined overcoat. 
+      We offer up to 9 Pantone colors and ensure a smooth, even finish across all surface types.
+    </p>
+
+    <ol class="features-list">
+      <li> White or Metal Base Options</li>
+      <li> Up to 9 Pantone Colors</li>
+      <li> Smooth, Even Overcoat: Glossy, Semi-Matte, or Soft Touch</li>
+    </ol>
+
+    <div class="can-wrapper">
+      <img src="images/vernis.png" alt="Segmented Can" class="can-image" />
+
+      <!-- Left Indicators -->
+      <div class="indicator left" style="top: 15%;" data-tooltip="Metal Base + Soft Touch Finish"></div>
+      <div class="indicator left" style="top: 45%;" data-tooltip="Metal Base + Semi-Matte Finish"></div>
+      <div class="indicator left" style="top: 75%;" data-tooltip="Metal Base + Glossy Finish"></div>
+
+      <!-- Right Indicators -->
+      <div class="indicator right" style="top: 15%;" data-tooltip="White Base + Soft Touch Finish"></div>
+      <div class="indicator right" style="top: 45%;" data-tooltip="White Base + Semi-Matte Finish"></div>
+      <div class="indicator right" style="top: 75%;" data-tooltip="White Base + Glossy Finish"></div>
+    </div>
+  </div>
+</section>
+
 
 
 <footer>
@@ -257,17 +289,15 @@ document.querySelectorAll('.carousel-scroll').forEach(carouselScroll => {
   const visibleWidth = carouselScroll.clientWidth;
 
   let pageCount;
-if (window.innerWidth <= 768 && window.innerHeight > window.innerWidth) {
-  // Mobile portrait
-  pageCount = 9;
-} else {
-  // Desktop and landscape
-  pageCount = 3;
-}
+  if (window.innerWidth <= 768 && window.innerHeight > window.innerWidth) {
+    pageCount = 9; // Mobile portrait
+  } else {
+    pageCount = 3; // Desktop or landscape
+  }
 
   const pageWidth = (totalScrollWidth - visibleWidth) / (pageCount - 1);
 
-  // Create 3 dots
+  // Create dots
   for (let i = 0; i < pageCount; i++) {
     const dot = document.createElement('button');
     if (i === 0) dot.classList.add('active');
@@ -282,59 +312,107 @@ if (window.innerWidth <= 768 && window.innerHeight > window.innerWidth) {
 
   const dots = dotsContainer.querySelectorAll('button');
 
-  // Sync active dot on scroll
+  // Update active dot on scroll
   carouselScroll.addEventListener('scroll', () => {
     const scrollLeft = carouselScroll.scrollLeft;
     const currentPage = Math.round(scrollLeft / pageWidth);
-
     dots.forEach((dot, idx) => {
       dot.classList.toggle('active', idx === currentPage);
     });
   });
 
-  // Drag & Touch Support
+  // Drag & Touch + Smooth Momentum
   let isDown = false;
   let startX;
-  let scrollLeft;
+  let scrollLeftStart;
+  let velocity = 0;
+  let lastX = 0;
+  let lastTime = 0;
+  let animationFrame;
 
+  // Desktop Drag Events
   carouselScroll.addEventListener('mousedown', (e) => {
     isDown = true;
-    carouselScroll.classList.add('active');
     startX = e.pageX - carouselScroll.getBoundingClientRect().left;
-    scrollLeft = carouselScroll.scrollLeft;
-  });
-
-  carouselScroll.addEventListener('mouseleave', () => {
-    isDown = false;
-    carouselScroll.classList.remove('active');
-  });
-
-  carouselScroll.addEventListener('mouseup', () => {
-    isDown = false;
-    carouselScroll.classList.remove('active');
+    scrollLeftStart = carouselScroll.scrollLeft;
+    velocity = 0;
+    lastX = startX;
+    lastTime = Date.now();
+    cancelAnimationFrame(animationFrame);
   });
 
   carouselScroll.addEventListener('mousemove', (e) => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - carouselScroll.getBoundingClientRect().left;
-    const walk = (x - startX);
-    carouselScroll.scrollLeft = scrollLeft - walk;
+    const walk = x - startX;
+    carouselScroll.scrollLeft = scrollLeftStart - walk;
+
+    const now = Date.now();
+    const dx = x - lastX;
+    const dt = now - lastTime;
+    velocity = dx / dt;
+    lastX = x;
+    lastTime = now;
   });
 
-  // Touch
+  carouselScroll.addEventListener('mouseup', () => {
+    isDown = false;
+    momentumScroll();
+  });
+
+  carouselScroll.addEventListener('mouseleave', () => {
+    if (isDown) {
+      isDown = false;
+      momentumScroll();
+    }
+  });
+
+  function momentumScroll() {
+    velocity *= 30; // boost
+    function animate() {
+      carouselScroll.scrollLeft -= velocity;
+      velocity *= 0.95; // friction
+      if (Math.abs(velocity) > 0.5) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    }
+    animationFrame = requestAnimationFrame(animate);
+  }
+
+  // Touch Events
   carouselScroll.addEventListener('touchstart', (e) => {
     startX = e.touches[0].pageX - carouselScroll.getBoundingClientRect().left;
-    scrollLeft = carouselScroll.scrollLeft;
+    scrollLeftStart = carouselScroll.scrollLeft;
   });
 
   carouselScroll.addEventListener('touchmove', (e) => {
     const x = e.touches[0].pageX - carouselScroll.getBoundingClientRect().left;
-    const walk = (x - startX);
-    carouselScroll.scrollLeft = scrollLeft - walk;
+    const walk = x - startX;
+    carouselScroll.scrollLeft = scrollLeftStart - walk;
   });
 });
 
+
+
+
+  // document.querySelectorAll('.indicator').forEach(indicator => {
+  //   indicator.addEventListener('click', () => {
+  //     let tooltip = document.createElement('div');
+  //     tooltip.className = 'click-tooltip';
+  //     tooltip.innerText = indicator.getAttribute('data-tooltip');
+  //     tooltip.style.position = 'absolute';
+  //     tooltip.style.left = '30px';
+  //     tooltip.style.top = '0';
+  //     tooltip.style.background = '#fff';
+  //     tooltip.style.padding = '8px 20px';
+  //     tooltip.style.borderRadius = '5px';
+  //     tooltip.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+  //     tooltip.style.zIndex = '1000';
+  //     indicator.appendChild(tooltip);
+  //     setTimeout(() => tooltip.remove(), 3000);
+  //   });
+  // });
 
 
 </script>

@@ -1752,6 +1752,13 @@ footer {
   .step-text p {
     text-align: center;
 }
+.tab-content.active {
+  /*display: flex;
+  gap: 150px;
+  justify-content: flex-start;*/
+  height:auto
+}
+
 
 }
 .carousel-section {
@@ -1847,8 +1854,8 @@ footer {
   margin-top: 0.2rem;
   font-weight: bold;
 }
-<style>
-.printing-section {
+
+/* .printing-section {
   max-width: 1200px;
   margin: 0 auto;
   padding: 60px 20px;
@@ -1900,6 +1907,147 @@ footer {
  transition: transform 0.1s ease;
   will-change: transform;
   background-size: auto 100%;
+} */
+
+
+
+
+.can-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f5f5f5;
+  position: relative;
+}
+.content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.can-wrapper {
+  margin-top: 40px;
+  position: relative;
+  width: 250px;
+}
+
+.can-wrapper {
+  margin-top: 40px;
+  position: relative;
+  width: 250px;
+}
+
+.can-image {
+  width: 100%;
+  display: block;
+}
+
+/* Common styles for indicators */
+.indicator {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #21428a;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+/* Positioning left and right indicators */
+.indicator.left {
+  left: 50px;
+}
+
+.indicator.right {
+  right: 50px;
+}
+
+.indicator:hover {
+  transform: scale(1.2);
+}
+
+/* Tooltip styling */
+.indicator::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -5px;
+  background: #fff;
+  color: #333;
+  padding: 6px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+/* Tooltip position based on side */
+.indicator.left::after {
+  right: 130%;
+}
+
+.indicator.right::after {
+  left: 130%;
+}
+
+.indicator:hover::after {
+  opacity: 1;
+}
+
+
+.printing-finishing {
+  background: #fefefe;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 50px;
+  margin-bottom: 20px;
+  color: #21428a;
+}
+
+.section-description {
+  font-size: 1.1em;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  color: #555;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 700px;
+  text-align: left;
+}
+
+.features-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  color: #333;
+}
+
+/* Keep using previous styles for .can-wrapper, .can-image, .indicator, etc. */
+
+.features-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  background-color: #030f27; /* change this to your desired color */
+  border-radius: 50%;
 }
 
 </style>
