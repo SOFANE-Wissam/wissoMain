@@ -949,7 +949,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 20px;
+ gap: 10px;
   font-size: 18px;
   text-align: left;
 
@@ -964,26 +964,39 @@ body {
 }
 
 .cross-icon i {
-  font-size: 30px;
+  font-size: 40px;
 }
 
 .modal-contact-button {
   background-color: #214284;
   padding: 10px 20px;
   font-size: 18px;
+  font-weight: bold;
   border-radius: 20px;
   color: white;
+  text-align: center;         /* Horizontally center text */
+  display: inline-block;      /* Or 'block' depending on context */
+  vertical-align: middle;     /* Helps align text in line with other elements */
+  line-height: normal;        /* Ensure line height doesn't interfere */
 }
-
+.modal-contact-button:hover {
+  background-color: #d2ddf7;
+  color: #214284;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;    /* Horizontal centering */
+  align-items: center;        /* Vertical centering */
+}
 .modal-text-area h4 {
   text-align: left;
-  font-size: 25px;
+  font-size: 30px;
   color: black;
   font-weight: bold;
   letter-spacing: normal;
 }
 .modal-box img {
   display: block;
+  border-radius:8px;
 }
 
 @media (max-width: 890px) {
@@ -1086,14 +1099,14 @@ body {
   user-select: none;
   cursor: pointer;
   font-size: 12px;
-  color: #000000;
+  color: #fff;
   font-weight: lighter;
   display: flex;
   justify-content: space-between;
 }
 
 .filter-title i {
-  color: #000000;
+  color: #fff;
   font-size: 18px;
 }
 

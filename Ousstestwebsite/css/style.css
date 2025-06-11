@@ -93,8 +93,8 @@ input[type='week'] {
 
 input[type='checkbox'],
 input[type='radio'] {
-  width: 13px;
-  height: 13px;
+  width: 15px;
+  height: 15px;
 }
 
 /* File Uploads
@@ -110,6 +110,8 @@ input[type='file'] {
 input[type='search'] {
   -webkit-appearance: textfield;
   -webkit-box-sizing: content-box;
+  width:200px;
+  height:25px
 }
 
 /* Turn off the recent search for webkit. It adds about 15px padding on the left */
@@ -2050,7 +2052,50 @@ footer {
   border-radius: 50%;
 }
 
+
+
+.modal-details-button {
+  display: flex; /* Changed from inline-block */
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
+  gap: 8px; /* spacing between icon and text */
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: red;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  text-align: center; /* Optional, for multi-line text */
+}
+
+.modal-details-button i {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.modal-details-button:hover {
+  background-color: #fff;
+  font-weight: bold;
+  color: red;
+}
+.modal-details-button:hover i {
+  color: red;
+}
+
+
+
+
+ .modal-specs p {
+  margin: 6px 0;
+  font-size: 18px;
+  color: #444;
+}
+.modal-specs strong {
+  font-weight: 600;
+  color: #222;
+} 
+
+
 </style>
-
-  
-
