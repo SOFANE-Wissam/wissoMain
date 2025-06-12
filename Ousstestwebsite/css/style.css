@@ -348,6 +348,16 @@ a {
   background-color: #21428aeb;
   height: 100px;
 }
+.navBar.opacity .lang-switcher a {
+  color: #21428A;
+  font-size: 17px;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: color 0.3s;
+}
+.navBar.opacity .lang-switcher a:hover {
+  color: #8eaaec;
+}
 
 .navBar.opacity:hover {
   background-color: rgba(255, 255, 255, 1);
@@ -1438,11 +1448,14 @@ h3 {
   font-size: 2rem;
   margin-top: 60px;
   color: #001f3f;
+  margin-bottom:20px;
 }
 
 .team-container {
   padding: 30px 20px;
   text-align: center;
+  margin-right:100px;
+  margin-left:100px;
 }
 
 .team-member {
@@ -1478,6 +1491,7 @@ h3 {
 }
 .faq-section {
   padding: 60px 20px;
+  margin-top: -390px;
   background-color: #f9f9f9;
   font-family: 'Segoe UI', sans-serif;
 }
@@ -1549,7 +1563,7 @@ h3 {
   padding: 15px 20px;
   cursor: pointer;
   transition: background 0.3s;
-  font-size:18px;
+  font-size:20px;
 }
 
 .faq-list summary {
@@ -1563,14 +1577,15 @@ h3 {
 }
 
 .faq-list details[open] {
-  background: #21428A;
-  font-size:16px;
+   background: #fff;
+   color: #21428A;
+  font-size:18px;
 }
 
 .faq-list details p {
   margin-top: 10px;
-  color: rgb(255, 255, 255);
-  font-size:16px;
+  color: #030f27;
+  font-size:17px;
   text-align: justify;
   line-height: 1.4;
 }
@@ -2097,5 +2112,24 @@ footer {
   color: #222;
 } 
 
+
+
+/* Language switcher */
+.lang-switcher {
+  float: right;
+  margin-right: 20px;
+}
+
+.lang-switcher a {
+  color: #fff;
+  font-size: 17px;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: color 0.3s;
+}
+
+.lang-switcher a:hover {
+  color: #8eaaec;
+}
 
 </style>

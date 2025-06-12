@@ -412,7 +412,7 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color:#21428ad3;
+  background-color:#21428a;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -429,6 +429,7 @@ body {
 
 .elementor-widget-wrap {
   margin-left: -100px;
+  border-radius:5px;
   font-size: 20px;
   height: auto;
   width: 600px;
@@ -436,7 +437,7 @@ body {
   flex-direction: column;
   list-style: circle;
   background-color:#ffffff;
-  padding: 50px 50px 50px 50px;
+  padding: 40px 40px 40px 40px;
   box-sizing: border-box;
   max-width: 100%;
   z-index: 9998;
@@ -486,60 +487,6 @@ body {
     word-wrap: break-word;
 
   }
-.manager {
-  border-radius: 10px;
-  font-family: Arial, sans-serif;
-  height: 400px;
-  padding: 20px; /* one padding only */
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  position: relative;
-  margin-top: -500px; /* match the same top offset */
-}
- .manager img {
-  width: 300px;
-  height: auto;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-    
-  },
-  .product img {
-  width: 300px;
-  height: auto;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
- .manager img:hover,
- .product img:hover {
-  transform: scale(1.1); /* Zoom only on hover */
-}
-
-    .quote {
-      max-width: 400px;
-    }
-
-    .quote p {
-      font-size: 18px;
-      font-weight: bold;
-      color: #011c3a;
-      text-align: center;
-      
-    }
-
-    .quote span {
-      display: block;
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-      color: #003366;
-      font-weight: 600;
-  
-}
-
-
 #tab5 .tab-text {
   display: flex;
   flex-direction: column;
@@ -998,7 +945,7 @@ body {
 }
 
 .content {
-  padding: 50px 0px;
+  padding: 30px 0px;
   display: flex;
   margin: 0 auto;
   max-width: 1200px;
@@ -1077,6 +1024,7 @@ body {
   gap: 40px;
   flex-wrap: wrap;
   margin-bottom: 60px;
+  margin-top: 10px;
 }
 
 .embossimg {

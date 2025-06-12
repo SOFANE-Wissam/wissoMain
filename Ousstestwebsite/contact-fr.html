@@ -42,7 +42,7 @@
         </li>
 
         <li class="link">
-            <a href="process-fr.html"><strong>Procédé</strong></a>
+            <a href="process-fr.html"><strong>Processus</strong></a>
         </li>
         <li class="link">
             <a href="about-fr.html"><strong>À propos</strong></a>
@@ -78,21 +78,22 @@
             </div>
 
 
-      
+  
+            
 </div>
 <div class="contact-section">
 		<div class="container">
 				<h3>Besoin de plus d'informations ?</h3>
-           <p>Notre équipe est à votre disposition pour toute question.</p><br>
+           <p>&nbsp;Notre équipe est à votre disposition pour toute question.</p><br>
 				<div class="contact-area">
 
-						<form id="contactForm">
-								<input type="name" placeholder="Nom complet" required>
-<input type="mail" placeholder="Email" required>
-<input type="number" placeholder="Numéro de téléphone" required>
-<select name="product">
-  <option value="">Produit</option>
-																		<option value="Flat 45x150" >Flat 45x150</option>
+						<form id="contactForm" action="contact.php" method="POST">
+							<input type="name" id="name" name="name" placeholder="Nom complet" required>
+              <input type="mail" id="mail" name="Email" placeholder="Email" required>
+              <input type="number" id="number" name="number" placeholder="Numéro de téléphone" required>
+              <select name="product" optional>
+                <option value="">Produit</option>
+																		<option value="Flat 45x150" >Flat</option>
 																		<option value="Flat shape A-1" >Flat shape A-1</option>
 																		<option value="Flat shape A-2" >Flat shape A-2</option>
 																		<option value="Flat shape A-3" >Flat shape A-3</option>
@@ -105,18 +106,23 @@
 																		<option value="Gorge shape B " >Gorge shape B </option>
 																		<option value="Gorge shape c " >Gorge shape c </option>
 																		<option value="Oval" >Oval</option>
-																		<option value="Round 53x125" >Round 53x125</option>
+																		<option value="Round 53x125" >Round</option>
 																	</select>
 								
-									<select type="you are an/a"  placeholder="you are an/a" required>
-								            <option value="">Vous êtes</option>
-  <option value="Client">Client</option>
-  <option value="Fournisseur">Fournisseur</option>
-  <option value="Employé">Employé</option>
-  <option value="Autre">Autre</option>
-								<textarea name="message" placeholder="Message"></textarea>
-<button type="submit">Envoyer</button>
-								<input type="hidden" name="_token" value="">						</form>
+									<select name="role" required>
+								    <option value="">Vous êtes un</option>
+                    <option value="Client">Client</option>
+                    <option value="Fournisseur">Fournisseur</option>
+                    <option value="Employé">Employé</option>
+                    <option value="Autre">Autre</option>
+                  </select>
+
+								<textarea name="message" placeholder="Message" required></textarea>
+														
+              <button type="submit">Envoyer</button>
+
+
+              </form>
 				<div>
 							<iframe
                                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.52603028565!2d3.3694832!3d36.7339406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128e5dd5af59c92b%3A0xd33ebe346e0aa6f3!2sSARL%20REINE%20DES%20ZIBAN!5e0!3m2!1sen!2sdz!4v1715980100000"
@@ -187,7 +193,7 @@
 	  <!-- ✅ New Left Section: Logo + Description -->
 	  <div class="footer-brand" style="flex: 1; min-width: 250px;">
 		<img src="images/logo.png"  style="max-width: 150px; margin-bottom: 10px;">
-		<p>Fabrication et industrie de boîtes aérosol en aluminium monobloc.</p>
+		<p>Fabrication et industrie de bouteilles aérosol en aluminium monobloc.</p>
 	  </div>
   
 	  <!-- 📍 Contact Info -->
@@ -202,7 +208,7 @@
 	  <div class="useful-links" style="flex: 1; min-width: 250px;">
 			<p><strong>Liens utiles</strong></p>
 			<p><a href="products-fr.html">Produits</a></p>
-			<p><a href="process-fr.html">Procédé</a></p>
+			<p><a href="process-fr.html">Processus</a></p>
 			<p><a href="about-fr.html">À propos</a></p>
 			<p><a href="contact-fr.html">Contact</a></p>
 	  </div>
@@ -256,6 +262,7 @@ $('#contactForm').on('submit', function(){
     $('.select-items div').on('click',function () {
       location.href = '/locale/'+$(this).text().toLowerCase();
     });
+
     </script>
 </body>
 
